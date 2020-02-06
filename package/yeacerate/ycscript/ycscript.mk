@@ -53,7 +53,7 @@ endif
 
 ifeq ($(BR2_PACKAGE_PHPWEBSERVER),y)
 define ADD_PHPWEBSERVER
-	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/S80phpwebserver $(TARGET_DIR)/etc/init.d/S80phpwebserver
+	$(INSTALL) -D -m 0755 -D ${YCSCRIPT_SITE}/S80phpwebserver $(TARGET_DIR)/etc/init.d/S80phpwebserver
 endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_PHPWEBSERVER
 endif
