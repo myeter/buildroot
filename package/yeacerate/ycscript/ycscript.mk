@@ -19,7 +19,7 @@ define YCSCRIPT_BUILD_CMDS
 	$(INSTALL) -D -m 0755 -D ${YCSCRIPT_SITE}/wpa_supplicant.conf $(TARGET_DIR)/etc/
 	$(INSTALL) -D -m 0755 -D ${YCSCRIPT_SITE}/dnsmasq.conf $(TARGET_DIR)/etc/
 	$(INSTALL) -D -m 0755 -D ${YCSCRIPT_SITE}/S* $(TARGET_DIR)/etc/init.d/
-	rm $(TARGET_DIR)/etc/init.d/S90phpwebserver
+	rm $(TARGET_DIR)/etc/init.d/S80phpwebserver
 
 	if test -e $(YCSCRIPT_USB_CONFIG_FILE) ; then \
 		rm $(YCSCRIPT_USB_CONFIG_FILE) ; \
@@ -53,7 +53,7 @@ endif
 
 ifeq ($(BR2_PACKAGE_PHPWEBSERVER),y)
 define ADD_PHPWEBSERVER
-	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/S90phpwebserver $(TARGET_DIR)/etc/init.d/S90phpwebserver
+	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/S80phpwebserver $(TARGET_DIR)/etc/init.d/S80phpwebserver
 endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_PHPWEBSERVER
 endif

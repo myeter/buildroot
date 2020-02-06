@@ -3,7 +3,7 @@
 case "$1" in
 	start)
 		printf "Starting wpa_supplicant: "
-		sleep 5s;
+		#sleep 9s;
 		/usr/sbin/wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -P /tmp/wpa_supplicant.pid
 		[ $? = 0 ] && echo "OK" || echo "FAIL"
 		;;

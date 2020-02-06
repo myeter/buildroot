@@ -10,6 +10,7 @@ PORT="80"
 case "$1" in
 	start)
 		printf "Starting PHP web server ... "
+		/etc/init.d/S40network restart;
 		start-stop-daemon -S -q -m -b -p /tmp/webserver.pid --exec /usr/bin/php  -- -S $HOST:$PORT -t $WEBDIR
 		echo "done."
 		;;
