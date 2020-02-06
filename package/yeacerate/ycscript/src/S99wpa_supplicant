@@ -3,11 +3,13 @@
 case "$1" in
 	start)
 		printf "Starting wpa_supplicant: "
-		/usr/sbin/wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+		sleep 5s;
+		/usr/sbin/wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -P /tmp/wpa_supplicant.pid
 		[ $? = 0 ] && echo "OK" || echo "FAIL"
 		;;
 	stop)
 		printf "Stopping wpa_supplicant: "
+		start-stop-daemon -K -q -p /tmp/wpa_supplicant.pid;
 		[ $? = 0 ] && echo "OK" || echo "FAIL"
 		;;
 	restart|reload)
