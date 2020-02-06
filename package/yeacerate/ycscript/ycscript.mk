@@ -41,5 +41,14 @@ endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_INKEY2
 endif
 
+ifeq ($(BR2_PACKAGE_IONCUBE),y)
+define ADD_IONCUBE
+	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/ioncube_loader_lin_7.1.so $(TARGET_DIR)/usr/lib/php/extensions/no-debug-non-zts-20160303/
+	sed '/extension=php_xsl.dll/a\zend_extension=ioncube_loader_lin_7.1.so' $(TARGET_DIR)/etc/php.ini > $(TARGET_DIR)/etc/b.txt
+	mv $(TARGET_DIR)/etc/b.txt $(TARGET_DIR)/etc/php.ini
+endef
+YCSCRIPT_POST_BUILD_HOOKS += ADD_IONCUBE
+endif
+
 
 $(eval $(generic-package))
