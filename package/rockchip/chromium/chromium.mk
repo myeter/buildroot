@@ -7,7 +7,7 @@ CHROMIUM_VERSION = 79.0.3945.79
 CHROMIUM_SITE_METHOD = local
 CHROMIUM_SITE = $(TOPDIR)/../external/chromium
 
-CHROMIUM_WRAPPER_EXTRA_ARGS=CHROME_EXTRA_ARGS+=" --no-sandbox --gpu-sandbox-start-early --ignore-gpu-blacklist "
+CHROMIUM_WRAPPER_EXTRA_ARGS=CHROME_EXTRA_ARGS+=" --no-sandbox --gpu-sandbox-start-early --ignore-gpu-blacklist --disable-features=TranslateUI"
 
 ifeq ($(call qstrip,$(BR2_ARCH)),arm)
     CHROMIUM_ARCH := armhf

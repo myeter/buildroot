@@ -20,3 +20,8 @@ config BR2_PACKAGE_PHPWEBSERVER
 	help
 	  PHP web server service.
 
+config BR2_PACKAGE_CNFONT
+	bool "Chinese fonts support"
+	depends on BR2_PACKAGE_FONTCONFIG
+	help
+	  Chinese fonts support.

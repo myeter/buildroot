@@ -58,5 +58,15 @@ endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_PHPWEBSERVER
 endif
 
+ifeq ($(BR2_PACKAGE_CNFONT),y)
+define ADD_CNFONT
+	mkdir -p $(TARGET_DIR)/usr/share/fonts/arphic
+	mkdir -p $(TARGET_DIR)/usr/share/fonts/droid
+	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/fonts/arphic/uming.ttc $(TARGET_DIR)/usr/share/fonts/arphic/
+	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/fonts/droid/DroidSansFallbackFull.ttf $(TARGET_DIR)/usr/share/fonts/droid/
+endef
+YCSCRIPT_POST_BUILD_HOOKS += ADD_CNFONT
+endif
+
 
 $(eval $(generic-package))

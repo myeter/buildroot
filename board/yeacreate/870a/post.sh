@@ -13,6 +13,10 @@ cp $(pwd)/board/yeacreate/870a/pulse/S50pulseaudio $(pwd)/output/target/etc/init
 rm $(pwd)/output/target/var/spool -f
 mkdir -p $(pwd)/output/target/var/spool/cron/crontabs
 mkdir -p $(pwd)/output/target/var/spool/fontconfig
+mkdir -p $(pwd)/output/target/var/lib/dpkg/status
+mkdir -p $(pwd)/output/target/cache
+mkdir -p $(pwd)/output/target/root
+
 
 
 exit 0
