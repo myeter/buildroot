@@ -13,3 +13,10 @@ config BR2_PACKAGE_IONCUBE
 	depends on BR2_PACKAGE_PHP
 	help
 	  Ioncube loader v10.3.9 for php7.1.
+
+config BR2_PACKAGE_PHPWEBSERVER
+	bool "PHP Web server service"
+	depends on BR2_PACKAGE_PHP
+	help
+	  PHP web server service.
+

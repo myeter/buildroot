@@ -1,0 +1,30 @@
+#!/bin/sh
+############################################
+# This is the php web server for YeaCreate #
+############################################
+
+WEBDIR="/home/php/www/"
+HOST="127.0.0.1"
+PORT="80"
+
+case "$1" in
+	start)
+		printf "Starting PHP web server ... "
+		start-stop-daemon -S -q -m -b -p /tmp/webserver.pid --exec /usr/bin/php  -- -S $HOST:$PORT -t $WEBDIR
+		echo "done."
+		;;
+	stop)
+		printf "Stopping web server ..."
+		start-stop-daemon -K -q -p /tmp/webserver.pid;
+		echo "done."
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+	*)
+		echo "usage: $0 {start|stop|restart}"
+		;;
+esac
+exit 0
