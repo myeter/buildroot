@@ -1,6 +1,6 @@
 # <file system>			<mount pt>		<type>		<options>		<dump>	<pass>
-/dev/mmcblk1p6			/			    ext2		rw,noauto		0	1
-/dev/mmcblk1p5 			/home 		    vfat  		defaults  		1   2
+/dev/mmcblk1p6			/			    ext4		rw,noauto		0	1
+/dev/mmcblk1p5 			/home 		    ext4  		defaults  		1   2
 proc					/proc			proc		defaults		0	0
 devpts					/dev/pts		devpts		defaults,gid=5,mode=620	0	0
 tmpfs					/tmp			tmpfs		mode=1777,size=256M		0	0
