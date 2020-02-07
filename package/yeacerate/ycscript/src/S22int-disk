@@ -14,5 +14,6 @@ case "$1" in
 	/bin/sleep 14s;
 	/sbin/reboot;
 	fi
+	/sbin/swapon /dev/mmcblk1p4;
 	;;
 esac
