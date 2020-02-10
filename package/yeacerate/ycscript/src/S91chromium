@@ -7,7 +7,7 @@ CCOMMAND="--no-sandbox --gpu-sandbox-start-early --ozone-platform=wayland --igno
 case "$1" in
 	start)
 		printf "Starting chromium ... "
-		mkdir -p /tmp/.xdg &&  chmod 0700 /tmp/.xdg;export XDG_RUNTIME_DIR=/tmp/.xdg;
+		mkdir -p /tmp/.xdg &&  chmod 0700 /tmp/.xdg;export XDG_RUNTIME_DIR=/tmp/.xdg;export WESTON_DRM_MIRROR=1;
 		touch /dev/video-dec0;
 		chmod 666 /dev/video-dec0;
 		echo enc > /dev/video-enc0;
