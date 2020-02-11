@@ -1,0 +1,19 @@
+menuconfig BR2_PACKAGE_YEACREATE
+	bool "Yea Create packages"
+
+
+if BR2_PACKAGE_YEACREATE
+choice
+	default BR2_PACKAGE_N870A
+	prompt "Yea Create support"
+
+config BR2_PACKAGE_N870A
+	bool "Ntablet 870A"
+	help
+		Ntablet 870A Support
+
+endchoice
+
+source "package/yeacerate/ycscript/Config.in"
+
+endif

@@ -1,0 +1,9 @@
+config BR2_PACKAGE_YCSCRIPT
+	bool "Yea Create script"
+	help
+	  YeaCreate script for linux use.
+
+config BR2_PACKAGE_INKEY2
+	bool "Yea Create key"
+	help
+	  YeaCreate internal use only,please do not add it for normal use.
