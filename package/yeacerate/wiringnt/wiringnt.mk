@@ -1,0 +1,49 @@
+################################################################################
+#
+# wiringnt
+# http://yeacreate.com
+# support@yeacreate.com
+################################################################################
+WIRINGNT_SITE = "https://github.com/yeacreate-opensources/wiringNT"
+WIRINGNT_VERSION = master
+WIRINGNT_SITE_METHOD = git
+WIRINGNT_GIT_SUBMODULES = YES
+
+WIRINGNT_LICENSE = LGPL-3.0+
+WIRINGNT_LICENSE_FILES = COPYING.LESSER
+WIRINGNT_INSTALL_STAGING = YES
+
+
+ifeq ($(BR2_STATIC_LIBS),y)
+WIRINGNT_LIB_BUILD_TARGETS = static
+WIRINGNT_LIB_INSTALL_TARGETS = install-static
+WIRINGNT_BIN_BUILD_TARGETS = gpio-static
+else ifeq ($(BR2_SHARED_LIBS),y)
+WIRINGNT_LIB_BUILD_TARGETS = all
+WIRINGNT_LIB_INSTALL_TARGETS = install
+WIRINGNT_BIN_BUILD_TARGETS = all
+else
+WIRINGNT_LIB_BUILD_TARGETS = all static
+WIRINGNT_LIB_INSTALL_TARGETS = install install-static
+WIRINGNT_BIN_BUILD_TARGETS = all
+endif
+
+define WIRINGNT_BUILD_CMDS
+	$(TARGET_MAKE_ENV)  $(TARGET_CONFIGURE_OPTS) $(MAKE) -C $(@D)/wiringPi $(WIRINGNT_LIB_BUILD_TARGETS)
+	$(TARGET_MAKE_ENV)  $(TARGET_CONFIGURE_OPTS) $(MAKE) -C $(@D)/devLib $(WIRINGNT_LIB_BUILD_TARGETS)
+	$(TARGET_MAKE_ENV)  $(TARGET_CONFIGURE_OPTS) $(MAKE) -C $(@D)/gpio $(WIRINGNT_BIN_BUILD_TARGETS)
+endef
+
+define WIRINGNT_INSTALL_STAGING_CMDS
+	$(TARGET_MAKE_ENV) $(MAKE) -j1 -C $(@D)/wiringPi $(WIRINGNT_LIB_INSTALL_TARGETS) DESTDIR=$(STAGING_DIR) PREFIX=/usr LDCONFIG=true
+	$(TARGET_MAKE_ENV) $(MAKE) -j1 -C $(@D)/devLib $(WIRINGNT_LIB_INSTALL_TARGETS) DESTDIR=$(STAGING_DIR) PREFIX=/usr LDCONFIG=true
+endef
+
+define WIRINGNT_INSTALL_TARGET_CMDS
+	$(TARGET_MAKE_ENV) $(MAKE) -j1 -C $(@D)/wiringPi $(WIRINGNT_LIB_INSTALL_TARGETS) DESTDIR=$(TARGET_DIR) PREFIX=/usr LDCONFIG=true
+	$(TARGET_MAKE_ENV) $(MAKE) -j1 -C $(@D)/devLib $(WIRINGNT_LIB_INSTALL_TARGETS) DESTDIR=$(TARGET_DIR) PREFIX=/usr LDCONFIG=true
+	$(INSTALL) -D -m 0755 $(@D)/gpio/gpio $(TARGET_DIR)/usr/bin/gpio
+endef
+
+$(eval $(generic-package))
+
