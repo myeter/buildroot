@@ -25,3 +25,8 @@ config BR2_PACKAGE_CNFONT
 	depends on BR2_PACKAGE_FONTCONFIG
 	help
 	  Chinese fonts support.
+
+config BR2_PACKAGE_YCSERVICE
+	bool "WebOS service"
+	help
+	  keep some base servcie running even on crash.
