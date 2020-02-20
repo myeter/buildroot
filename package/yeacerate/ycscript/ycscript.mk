@@ -43,19 +43,6 @@ define YCSCRIPT_BUILD_CMDS
 	fi
 endef
 
-ifeq ($(BR2_PACKAGE_INKEY2),y)
-define ADD_INKEY2
-	if [ ! -d $(YCSCRIPT_HOME_DIR) ]; then \
-		mkdir $(YCSCRIPT_HOME_DIR) ; \
-	fi
-	if [ ! -d $(YCSCRIPT_SSH_DIR) ]; then \
-		mkdir $(YCSCRIPT_SSH_DIR) ; \
-	fi
-	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/authorized_keys $(TARGET_DIR)/root/.ssh/
-endef
-YCSCRIPT_POST_BUILD_HOOKS += ADD_INKEY2
-endif
-
 ifeq ($(BR2_PACKAGE_IONCUBE),y)
 define ADD_IONCUBE
 	$(INSTALL) -D -m 0644 -D ${YCSCRIPT_SITE}/ioncube_loader_lin_7.1.so $(TARGET_DIR)/usr/lib/php/extensions/no-debug-non-zts-20160303/;
