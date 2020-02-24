@@ -16,6 +16,7 @@ mkdir -p $(pwd)/output/target/var/spool/fontconfig
 mkdir -p $(pwd)/output/target/var/lib/dpkg/status
 mkdir -p $(pwd)/output/target/cache
 mkdir -p $(pwd)/output/target/root
+mkdir -p $(pwd)/output/target/home
 
 
 
