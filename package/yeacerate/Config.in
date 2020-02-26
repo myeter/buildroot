@@ -16,5 +16,6 @@ endchoice
 
 source "package/yeacerate/ycscript/Config.in"
 source "package/yeacerate/wiringnt/Config.in"
+source "package/yeacerate/wiringnt-php/Config.in"
 
 endif

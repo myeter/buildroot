@@ -1,0 +1,13 @@
+config BR2_PACKAGE_WIRINGNT_PHP
+	bool "wiringnt-php"
+	depends on BR2_PACKAGE_WIRINGNT
+	depends on BR2_PACKAGE_PHP
+	help
+	  wiringPi php extension for Ntablet
+
+	  http://yeacreate.com/
+
+comment "wiringnt-php needs wiringnt"
+	depends on BR2_PACKAGE_WIRINGNT
+	depends on BR2_PACKAGE_PHP
+	depends on !BR2_TOOLCHAIN_HAS_THREADS

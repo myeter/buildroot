@@ -1,0 +1,52 @@
+From 64cc66042fef9ac29f58e418d283965a2debbaee Mon Sep 17 00:00:00 2001
+From: simon <simon@yeacreate.com>
+Date: Wed, 26 Feb 2020 16:42:36 +0800
+Subject: [PATCH] Adjust for buildroot build.  - enable CC override  - fix lib
+ include path for local build (without installing first)  - change CFLAGS from
+ '=' to '+=' to honour buildroot given flags  - add linker name link for
+ libwiringPiDev and libwiringPi for local linking    (without installing
+ first)  - fix install linker name link (do not link with absolute path)
+
+Signed-off-by: simon <simon@yeacreate.com>
+---
+ Makefile | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0b98911..05287b0 100755
+--- a/Makefile
++++ b/Makefile
+@@ -29,16 +29,16 @@ ifneq ($V,1)
+ Q ?= @
+ endif
+ 
+-CC	= gcc
++CC	?= gcc
+ DEBUG	= -O3
+ 
+ LIB = wiringpi
+ WRAP = wiringpi_wrap
+ 
+-INCLUDE	= -I/usr/local/include
+-CFLAGS = $(DEBUG) -c -fpic `php-config --includes` ${INCLUDE} -Winline -pipe
++INCLUDE	= -I.
++CFLAGS	+= $(DEBUG) -c -fpic `$(STAGING_DIR)/usr/bin/php-config --includes` ${INCLUDE} -Winline -pipe
+ 
+-LDFLAGS	= -L/usr/local/lib
++LDFLAGS	= -L.
+ LDLIBS    = -lwiringPi -lwiringPiDev -lpthread -lm
+ 
+ SRC	= $(WRAP).c
+@@ -54,8 +54,7 @@ $(LIB): $(OBJ)
+ 	$(CC) $(CFLAGS) $(SRC)
+ 
+ install:
+-	cp $(LIB).so `php-config --extension-dir`
+-	cp $(LIB).php `php-config --extension-dir`
++	cp $(LIB).so `$(STAGING_DIR)/usr/bin/php-config --extension-dir`
+ 
+ clean:
+ 	rm -f $(LIB).so
+-- 
+2.17.1
+
