@@ -41,6 +41,8 @@ define YCSCRIPT_BUILD_CMDS
 		sed '/respawn:\/sbin\/getty/a\::respawn:\/sbin\/getty -L ttyS2 115200 vt100' $(TARGET_DIR)/etc/inittab > $(TARGET_DIR)/etc/inittab.txt; \
 		mv $(TARGET_DIR)/etc/inittab.txt $(TARGET_DIR)/etc/inittab; \
 	fi
+
+	$(TARGET_CC) $(@D)/enable_screen.c -o $(@D)/enable_screen
 endef
 
 ifeq ($(BR2_PACKAGE_IONCUBE),y)
@@ -98,6 +100,8 @@ define ADD_YCSERVICE
 		$(TARGET_DIR)/etc/inittab > $(TARGET_DIR)/etc/inittab.txt; \
 		mv $(TARGET_DIR)/etc/inittab.txt $(TARGET_DIR)/etc/inittab; \
 	fi
+
+	$(INSTALL) -D -m 0755 $(@D)/enable_screen $(TARGET_DIR)/usr/bin/enable_screen
 endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_YCSERVICE
 endif
