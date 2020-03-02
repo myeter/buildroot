@@ -2,7 +2,7 @@
 
 WCOMMAND="--tty=2"
 #WCOMMAND="--tty=2 --idle-time=0"
-CCOMMAND="--no-sandbox --gpu-sandbox-start-early --ozone-platform=wayland --ignore-gpu-blacklist --kiosk --incognito --disable-pinch --overscroll-history-navigation=0 --test-type --ignore-certificate-errors --force-device-scale-factor=2.5 --disk-cache-dir=/dev/null --disk-cache-size=1 --disable-popup-blocking --no-first-run --disable-desktop-notifications --disable-web-security http://127.0.0.1"
+CCOMMAND="--no-sandbox --gpu-sandbox-start-early --ozone-platform=wayland --ignore-gpu-blacklist --kiosk --incognito --use-fake-ui-for-media-stream --disable-pinch --overscroll-history-navigation=0 --test-type --ignore-certificate-errors --disable-web-security --user-data-dir --force-device-scale-factor=2.5 --disk-cache-dir=/dev/null --disk-cache-size=1 --disable-popup-blocking --no-first-run --disable-desktop-notifications --disable-web-security http://127.0.0.1"
 
 case "$1" in
 	start)
