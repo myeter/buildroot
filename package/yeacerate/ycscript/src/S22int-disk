@@ -5,7 +5,6 @@ case "$1" in
 	start|"")
 	if [ -f "/root/first" ];then
 	/sbin/resize2fs /dev/mmcblk1p5;
-	/sbin/resize2fs /dev/mmcblk1p6;
 	/sbin/swapoff -a;
 	/sbin/mkswap /dev/mmcblk1p4;
 	/sbin/swapon /dev/mmcblk1p4;
