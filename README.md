@@ -1,3 +1,17 @@
+20200304
+changes:
+```
+add wiringNT-php
+
+add WebOS UI
+
+update rootfs, remove home partition
+
+add add timezone info
+
+updated kernel and DTS
+```
+
 20200220
 changes:
 ```
@@ -9,10 +23,7 @@ add wiringNT
 ```
 
 
-
-
 20191231
-
 changes:
 ```
 the php have downgrade as php7.1.30
