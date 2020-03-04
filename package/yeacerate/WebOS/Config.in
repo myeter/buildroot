@@ -1,0 +1,16 @@
+config BR2_PACKAGE_WEBOS
+	bool "WebOS"
+	depends on BR2_PACKAGE_WIRINGNT
+	depends on BR2_PACKAGE_CHROMIUM
+	help
+	  WebOS for Ntablet.
+		It's also a test DEMO for Ntablet.
+		depends on Chromium and php
+		It's a laravel base system, VUE as UI.
+			http://yeacreate.com/
+
+comment "WebOS needs a toolchain w/ threads"
+	depends on BR2_PACKAGE_WIRINGNT
+	depends on BR2_PACKAGE_CHROMIUM
+	depends on !BR2_TOOLCHAIN_HAS_THREADS
+
