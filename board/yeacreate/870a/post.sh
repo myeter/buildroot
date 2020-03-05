@@ -10,7 +10,7 @@ cp $(pwd)/board/yeacreate/870a/pulse/daemon.conf $(pwd)/output/target/etc/pulse/
 cp $(pwd)/board/yeacreate/870a/pulse/default.pa $(pwd)/output/target/etc/pulse/
 cp $(pwd)/board/yeacreate/870a/pulse/system.pa $(pwd)/output/target/etc/pulse/
 cp $(pwd)/board/yeacreate/870a/pulse/S50pulseaudio $(pwd)/output/target/etc/init.d/S50pulseaudio
-rm $(pwd)/output/target/var/spool -f
+rm $(pwd)/output/target/var/spool -fr
 mkdir -p $(pwd)/output/target/var/spool/cron/crontabs
 mkdir -p $(pwd)/output/target/var/spool/fontconfig
 mkdir -p $(pwd)/output/target/var/lib/dpkg/status
