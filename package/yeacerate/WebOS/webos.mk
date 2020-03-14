@@ -30,7 +30,7 @@
 # support@yeacreate.com
 ################################################################################
 WEBOS_SITE = https://github.com/yeacreate-opensources/WebOS.git
-WEBOS_VERSION = webos-1.0.1.0
+WEBOS_VERSION = webos-0.1.0.1
 WEBOS_SITE_METHOD = git
 WEBOS_SUBMODULES = YES
 WEBOS_DEPENDENCIES += \
