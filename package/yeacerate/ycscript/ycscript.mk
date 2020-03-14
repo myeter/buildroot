@@ -43,6 +43,7 @@ define YCSCRIPT_BUILD_CMDS
 	fi
 
 	$(TARGET_CC) $(@D)/enable_screen.c -o $(@D)/enable_screen
+	$(TARGET_CC) $(@D)/send_touch.c -o $(@D)/send_touch
 endef
 
 ifeq ($(BR2_PACKAGE_IONCUBE),y)
@@ -102,6 +103,7 @@ define ADD_YCSERVICE
 	fi
 
 	$(INSTALL) -D -m 0755 $(@D)/enable_screen $(TARGET_DIR)/usr/bin/enable_screen
+	$(INSTALL) -D -m 0755 $(@D)/send_touch $(TARGET_DIR)/usr/bin/send_touch
 endef
 YCSCRIPT_POST_BUILD_HOOKS += ADD_YCSERVICE
 endif
